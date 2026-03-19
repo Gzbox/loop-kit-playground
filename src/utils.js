@@ -32,4 +32,17 @@ function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
-module.exports = { capitalize, sum, clamp };
+/**
+ * Truncate a string to maxLength, adding "..." if truncated
+ * @param {string} str
+ * @param {number} maxLength
+ * @returns {string}
+ */
+function truncate(str, maxLength) {
+  if (!str || typeof str !== 'string') return '';
+  if (str.length <= maxLength) return str;
+  if (maxLength < 3) return '.'.repeat(maxLength);
+  return str.slice(0, maxLength - 3) + '...';
+}
+
+module.exports = { capitalize, sum, clamp, truncate };
