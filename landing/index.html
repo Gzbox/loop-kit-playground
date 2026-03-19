@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Loop Kit Playground — A lightweight utility toolkit for modern JavaScript. Capitalize, sum, clamp, truncate, slugify and more.">
+  <title>Loop Kit Playground — Utility Toolkit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ===== Particle Canvas Background ===== -->
+  <canvas id="particles"></canvas>
+
+  <!-- ===== Navigation ===== -->
+  <nav id="nav">
+    <div class="nav-brand">⚡ Loop Kit</div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#demo">Demo</a>
+      <a href="https://github.com/Gzbox/loop-kit-playground" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </nav>
+
+  <!-- ===== Hero Section ===== -->
+  <section id="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="glow-text">Loop Kit</span>
+        <span class="hero-subtitle-line">Playground</span>
+      </h1>
+      <p class="hero-tagline">
+        <span id="typing-text"></span><span class="cursor-blink">|</span>
+      </p>
+      <a href="#features" class="cta-btn" id="cta-btn">
+        <span>Explore Functions</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </a>
+    </div>
+    <div class="hero-glow"></div>
+  </section>
+
+  <!-- ===== Features Section ===== -->
+  <section id="features">
+    <div class="section-header">
+      <h2 class="section-title">Utility Functions</h2>
+      <p class="section-desc">Lightweight, dependency-free utilities for everyday JavaScript.</p>
+    </div>
+    <div class="features-grid">
+
+      <div class="feature-card" data-animate>
+        <div class="card-icon">Aa</div>
+        <h3>capitalize</h3>
+        <p>Capitalize the first letter of any string.</p>
+        <pre class="card-code"><code>capitalize("hello")
+<span class="code-result">// → "Hello"</span></code></pre>
+      </div>
+
+      <div class="feature-card" data-animate>
+        <div class="card-icon">Σ</div>
+        <h3>sum</h3>
+        <p>Sum an array of numbers with safety guards.</p>
+        <pre class="card-code"><code>sum([1, 2, 3, 4])
+<span class="code-result">// → 10</span></code></pre>
+      </div>
+
+      <div class="feature-card" data-animate>
+        <div class="card-icon">⇔</div>
+        <h3>clamp</h3>
+        <p>Clamp a number within a min–max range.</p>
+        <pre class="card-code"><code>clamp(15, 0, 10)
+<span class="code-result">// → 10</span></code></pre>
+      </div>
+
+      <div class="feature-card" data-animate>
+        <div class="card-icon">✂️</div>
+        <h3>truncate</h3>
+        <p>Truncate long strings with an ellipsis.</p>
+        <pre class="card-code"><code>truncate("Hello World", 8)
+<span class="code-result">// → "Hello..."</span></code></pre>
+      </div>
+
+      <div class="feature-card" data-animate>
+        <div class="card-icon">🔗</div>
+        <h3>slugify</h3>
+        <p>Convert any string into a URL-friendly slug.</p>
+        <pre class="card-code"><code>slugify("Hello World!")
+<span class="code-result">// → "hello-world"</span></code></pre>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== Live Demo Section ===== -->
+  <section id="demo">
+    <div class="section-header">
+      <h2 class="section-title">Live Playground</h2>
+      <p class="section-desc">Select a function, type your input, and see the result in real-time.</p>
+    </div>
+    <div class="demo-container" data-animate>
+      <div class="demo-controls">
+        <label for="fn-select" class="demo-label">Function</label>
+        <select id="fn-select">
+          <option value="capitalize">capitalize(str)</option>
+          <option value="sum">sum(numbers)</option>
+          <option value="clamp">clamp(value, min, max)</option>
+          <option value="truncate">truncate(str, maxLength)</option>
+          <option value="slugify">slugify(str)</option>
+        </select>
+      </div>
+      <div class="demo-panels">
+        <div class="demo-panel">
+          <div class="panel-header">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="panel-title">Input</span>
+          </div>
+          <textarea id="demo-input" placeholder="Type your input here..." spellcheck="false">hello world</textarea>
+        </div>
+        <div class="demo-arrow">→</div>
+        <div class="demo-panel">
+          <div class="panel-header">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="panel-title">Output</span>
+          </div>
+          <div id="demo-output" class="demo-output-area"></div>
+        </div>
+      </div>
+      <p class="demo-hint" id="demo-hint"></p>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer id="footer">
+    <div class="footer-glow"></div>
+    <div class="footer-content">
+      <p>
+        <a href="https://github.com/Gzbox/loop-kit-playground" target="_blank" rel="noopener">GitHub</a>
+        &nbsp;·&nbsp; MIT License &nbsp;·&nbsp; Built with ⚡ Loop Kit
+      </p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
