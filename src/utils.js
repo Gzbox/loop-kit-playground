@@ -33,4 +33,20 @@ function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
-module.exports = { capitalize, sum, clamp };
+/**
+ * Convert a string to a URL-friendly slug
+ * @param {string} str
+ * @returns {string}
+ */
+function slugify(str) {
+  if (!str || typeof str !== 'string') return '';
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, '')  // remove special chars
+    .replace(/[\s]+/g, '-')         // spaces → hyphens
+    .replace(/-+/g, '-')            // collapse multiple hyphens
+    .replace(/^-|-$/g, '');         // trim leading/trailing hyphens
+}
+
+module.exports = { capitalize, sum, clamp, slugify };
