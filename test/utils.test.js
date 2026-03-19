@@ -20,6 +20,22 @@ describe('sum', () => {
   it('should return 0 for empty array', () => {
     assert.equal(sum([]), 0);
   });
+
+  it('should return 0 for null input', () => {
+    assert.equal(sum(null), 0);
+  });
+
+  it('should return 0 for undefined input', () => {
+    assert.equal(sum(undefined), 0);
+  });
+
+  it('should return 0 for string input', () => {
+    assert.equal(sum("hello"), 0);
+  });
+
+  it('should return 0 for non-array input', () => {
+    assert.equal(sum(42), 0);
+  });
 });
 
 describe('clamp', () => {
