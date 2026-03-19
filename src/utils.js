@@ -18,6 +18,7 @@ function capitalize(str) {
  * @returns {number}
  */
 function sum(numbers) {
+  if (!Array.isArray(numbers)) return 0;
   return numbers.reduce((a, b) => a + b, 0);
 }
 
