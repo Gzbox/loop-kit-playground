@@ -1,0 +1,63 @@
+# Auto-label issues from Issue Form dropdowns
+#
+# When an issue is created via a GitHub Issue Form template,
+# this action parses the priority dropdown selection and
+# applies the corresponding label automatically.
+#
+# Copy this file to: .github/workflows/auto-label-issues.yml
+
+name: Auto Label Issues
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  auto-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply priority label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || '';
+            const labels = [];
+
+            // Priority detection
+            const priorityMap = {
+              'P0-critical': /P0-critical/i,
+              'P1-high': /P1-high/i,
+              'P2-medium': /P2-medium/i,
+              'P3-low': /P3-low/i,
+            };
+
+            for (const [label, regex] of Object.entries(priorityMap)) {
+              if (regex.test(body)) {
+                labels.push(label);
+                break; // Only one priority label
+              }
+            }
+
+            // Classification detection
+            if (/Plan needed/i.test(body)) {
+              labels.push('plan-needed');
+            }
+            if (/Human decision/i.test(body)) {
+              labels.push('skip-human-decision');
+            }
+
+            if (labels.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: labels,
+              });
+              console.log(`Applied labels: ${labels.join(', ')}`);
+            } else {
+              console.log('No matching labels found in issue body');
+            }
+

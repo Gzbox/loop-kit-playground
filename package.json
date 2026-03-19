@@ -1,0 +1,10 @@
+{
+  "name": "loop-kit-playground",
+  "version": "0.1.0",
+  "description": "Test playground for Loop Kit",
+  "main": "src/utils.js",
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "license": "MIT"
+}
