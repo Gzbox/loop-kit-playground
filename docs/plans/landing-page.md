@@ -64,15 +64,15 @@ No server-side logic. Everything runs client-side.
 
 ## Sub-tasks
 
-| # | Task | Complexity | Depends on |
-|---|------|------------|------------|
-| 1 | Create `landing/index.html` with semantic structure | Low | — |
-| 2 | Create `landing/style.css` — dark theme, glassmorphism, responsive layout | Medium | 1 |
-| 3 | Create `landing/main.js` — particle canvas, typing effect, scroll animations | Medium | 1 |
-| 4 | Add live demo logic (inline utils, dropdown, real-time output) | Medium | 1, 3 |
-| 5 | Polish: hover effects, micro-animations, mobile breakpoints | Low | 2, 3 |
+| # | Task | Complexity | Depends on | Status |
+|---|------|------------|------------|--------|
+| 1 | Create `landing/index.html` with semantic structure | Low | — | ✅ Done |
+| 2 | Create `landing/style.css` — dark theme, glassmorphism, responsive layout | Medium | 1 | ✅ Done |
+| 3 | Create `landing/main.js` — particle canvas, typing effect, scroll animations | Medium | 1 | ✅ Done |
+| 4 | Add live demo logic (inline utils, dropdown, real-time output) | Medium | 1, 3 | ✅ Done |
+| 5 | Polish: hover effects, micro-animations, mobile breakpoints | Low | 2, 3 | ✅ Done |
 
-Sub-tasks 1-4 can be done in a single implementation round since they form one cohesive deliverable. Task 5 is polish that can ride with the same PR.
+All sub-tasks completed in Round 2.
 
 ## Constraints
 
