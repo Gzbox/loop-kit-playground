@@ -34,19 +34,32 @@ function clamp(value, min, max) {
 }
 
 /**
+ * Truncate a string to maxLength, adding "..." if truncated
+ * @param {string} str
+ * @param {number} maxLength
+ * @returns {string}
+ */
+function truncate(str, maxLength) {
+  if (!str || typeof str !== "string") return "";
+  if (str.length <= maxLength) return str;
+  if (maxLength < 3) return ".".repeat(maxLength);
+  return str.slice(0, maxLength - 3) + "...";
+}
+
+/**
  * Convert a string to a URL-friendly slug
  * @param {string} str
  * @returns {string}
  */
 function slugify(str) {
-  if (!str || typeof str !== 'string') return '';
+  if (!str || typeof str !== "string") return "";
   return str
     .toLowerCase()
     .trim()
-    .replace(/[^a-z0-9\s-]/g, '')  // remove special chars
-    .replace(/[\s]+/g, '-')         // spaces → hyphens
-    .replace(/-+/g, '-')            // collapse multiple hyphens
-    .replace(/^-|-$/g, '');         // trim leading/trailing hyphens
+    .replace(/[^a-z0-9\s-]/g, "")  // remove special chars
+    .replace(/[\s]+/g, "-")         // spaces → hyphens
+    .replace(/-+/g, "-")            // collapse multiple hyphens
+    .replace(/^-|-$/g, "");         // trim leading/trailing hyphens
 }
 
-module.exports = { capitalize, sum, clamp, slugify };
+module.exports = { capitalize, sum, clamp, truncate, slugify };

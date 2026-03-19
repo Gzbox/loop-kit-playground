@@ -1,6 +1,6 @@
 const { describe, it } = require('node:test');
 const assert = require('node:assert/strict');
-const { capitalize, sum, clamp, slugify } = require('../src/utils');
+const { capitalize, sum, clamp, truncate, slugify } = require('../src/utils');
 
 describe('capitalize', () => {
   it('should capitalize first letter', () => {
@@ -49,6 +49,29 @@ describe('clamp', () => {
 
   it('should clamp to max', () => {
     assert.equal(clamp(15, 0, 10), 10);
+  });
+});
+
+describe('truncate', () => {
+  it('should truncate long strings with ellipsis', () => {
+    assert.equal(truncate('Hello World', 5), 'He...');
+  });
+
+  it('should not truncate short strings', () => {
+    assert.equal(truncate('Hi', 10), 'Hi');
+  });
+
+  it('should handle exact length', () => {
+    assert.equal(truncate('Hello', 5), 'Hello');
+  });
+
+  it('should handle null/undefined', () => {
+    assert.equal(truncate(null, 5), '');
+    assert.equal(truncate(undefined, 5), '');
+  });
+
+  it('should handle maxLength less than 3', () => {
+    assert.equal(truncate('Hello', 2), '..');
   });
 });
 
