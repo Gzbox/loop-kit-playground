@@ -1,6 +1,6 @@
 const { describe, it } = require('node:test');
 const assert = require('node:assert/strict');
-const { capitalize, sum, clamp, truncate } = require('../src/utils');
+const { capitalize, sum, clamp, truncate, slugify } = require('../src/utils');
 
 describe('capitalize', () => {
   it('should capitalize first letter', () => {
@@ -19,6 +19,22 @@ describe('sum', () => {
 
   it('should return 0 for empty array', () => {
     assert.equal(sum([]), 0);
+  });
+
+  it('should return 0 for null input', () => {
+    assert.equal(sum(null), 0);
+  });
+
+  it('should return 0 for undefined input', () => {
+    assert.equal(sum(undefined), 0);
+  });
+
+  it('should return 0 for string input', () => {
+    assert.equal(sum("hello"), 0);
+  });
+
+  it('should return 0 for non-array input', () => {
+    assert.equal(sum(42), 0);
   });
 });
 
@@ -56,5 +72,36 @@ describe('truncate', () => {
 
   it('should handle maxLength less than 3', () => {
     assert.equal(truncate('Hello', 2), '..');
+  });
+});
+
+describe('slugify', () => {
+  it('should convert spaces to hyphens', () => {
+    assert.equal(slugify('Hello World'), 'hello-world');
+  });
+
+  it('should trim and collapse whitespace', () => {
+    assert.equal(slugify('  Foo  Bar  '), 'foo-bar');
+  });
+
+  it('should collapse multiple hyphens', () => {
+    assert.equal(slugify('Hello---World'), 'hello-world');
+  });
+
+  it('should remove special characters', () => {
+    assert.equal(slugify('Hello, World!'), 'hello-world');
+  });
+
+  it('should handle empty string', () => {
+    assert.equal(slugify(''), '');
+  });
+
+  it('should handle null/undefined', () => {
+    assert.equal(slugify(null), '');
+    assert.equal(slugify(undefined), '');
+  });
+
+  it('should handle already slugified string', () => {
+    assert.equal(slugify('hello-world'), 'hello-world');
   });
 });
