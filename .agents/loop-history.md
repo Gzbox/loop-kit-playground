@@ -29,3 +29,13 @@
 **Tests**: 5 new tests, all 12 pass
 **Skipped**: none
 **Notes**: Implemented truncate with ellipsis within maxLength budget.
+
+## 2026-03-19 21:22
+
+**PRs processed**: (none open)
+**Issue worked**: #4 (P0-critical, enhancement, plan-needed) — 增加一个科技感满满的落地页
+**PR created**: #5
+**Approach**: Plan Mode Round 1 (design doc only)
+**Tests**: All 23 pass (no changes to src/test)
+**Skipped**: none
+**Notes**: Created `docs/plans/landing-page.md` with full design. Implementation in Round 2+.
