@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { AppLayout } from "@/components/layout/app-layout";
 import {
 	Card,
 	CardContent,
@@ -9,19 +9,54 @@ import {
 
 function App() {
 	return (
-		<div className="flex min-h-svh items-center justify-center bg-background p-4">
-			<Card className="w-full max-w-md">
-				<CardHeader>
-					<CardTitle>Admin System</CardTitle>
-					<CardDescription>
-						shadcn/ui components initialized successfully.
-					</CardDescription>
-				</CardHeader>
-				<CardContent>
-					<Button className="w-full">Get Started</Button>
-				</CardContent>
-			</Card>
-		</div>
+		<AppLayout breadcrumbs={[{ label: "Dashboard" }]}>
+			<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+				<Card>
+					<CardHeader>
+						<CardDescription>Total Users</CardDescription>
+						<CardTitle className="text-2xl">1,284</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<p className="text-xs text-muted-foreground">
+							+12% from last month
+						</p>
+					</CardContent>
+				</Card>
+				<Card>
+					<CardHeader>
+						<CardDescription>Revenue</CardDescription>
+						<CardTitle className="text-2xl">¥45,231</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<p className="text-xs text-muted-foreground">
+							+8.2% from last month
+						</p>
+					</CardContent>
+				</Card>
+				<Card>
+					<CardHeader>
+						<CardDescription>Active Orders</CardDescription>
+						<CardTitle className="text-2xl">573</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<p className="text-xs text-muted-foreground">
+							+3.1% from last month
+						</p>
+					</CardContent>
+				</Card>
+				<Card>
+					<CardHeader>
+						<CardDescription>Conversion</CardDescription>
+						<CardTitle className="text-2xl">2.4%</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<p className="text-xs text-muted-foreground">
+							+0.3% from last month
+						</p>
+					</CardContent>
+				</Card>
+			</div>
+		</AppLayout>
 	);
 }
 
