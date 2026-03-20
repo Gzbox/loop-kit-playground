@@ -11,6 +11,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { LanguageSwitcher } from "./language-switcher";
+import { ThemeToggle } from "./theme-toggle";
 
 interface AppHeaderProps {
 	breadcrumbs?: { label: string; href?: string }[];
@@ -47,6 +48,7 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
 			</Breadcrumb>
 			<div className="ml-auto flex items-center gap-1">
 				<LanguageSwitcher />
+				<ThemeToggle />
 			</div>
 		</header>
 	);
