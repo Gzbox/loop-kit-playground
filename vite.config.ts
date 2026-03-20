@@ -16,4 +16,15 @@ export default defineConfig({
 			"@": path.resolve(__dirname, "./src"),
 		},
 	},
+	build: {
+		rollupOptions: {
+			output: {
+				manualChunks: {
+					router: ["@tanstack/react-router"],
+					charts: ["recharts"],
+					i18n: ["i18next", "react-i18next"],
+				},
+			},
+		},
+	},
 });
