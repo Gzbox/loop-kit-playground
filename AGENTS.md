@@ -1,35 +1,48 @@
 # AGENTS.md
 
-Agent guidance for working on **loop-kit-playground**.
+## Project Overview
+Loop Kit Playground — a simple Node.js utility library used to test [Loop Kit](https://github.com/Gzbox/loop-kit)'s `/loop` workflow end-to-end. Contains utility functions (`capitalize`, `sum`, `clamp`, `truncate`, `slugify`) with full test coverage, plus a static landing page.
 
-## Project overview
+## Tech Stack
+- Language: JavaScript (Node.js)
+- Framework: None (vanilla Node.js)
+- Build tool: npm
+- Test runner: `node:test` (built-in)
 
-A simple Node.js utility library used as a test playground for [Loop Kit](https://github.com/Gzbox/loop-kit). Contains basic utility functions (`capitalize`, `sum`, `clamp`) with tests.
+## Build & Test Commands
 
-## Build and test commands
+| Command | Purpose |
+|:--------|:--------|
+| `npm test` | Run tests via `node --test test/` |
 
-```bash
-npm test          # Run all tests (Node.js built-in test runner)
-```
+## Components
 
-No build step required — this is a plain CommonJS module.
+| Component | Path | Description |
+|:----------|:-----|:------------|
+| utils | `src/` | Core utility functions |
+| tests | `test/` | Unit tests for utility functions |
+| landing | `landing/` | Static landing page (HTML/CSS/JS) |
+| docs | `docs/` | Documentation and plans |
 
-## Environment
+## Constraints
+- No external dependencies — pure Node.js standard library
+- Tests use Node.js built-in `node:test` and `node:assert/strict`
+- CommonJS modules (`require`/`module.exports`)
 
-- Node.js 20+
-- No external dependencies
-- CommonJS modules
+## Priorities
+- Focus: Testing Loop Kit workflows
+- Source of truth: GitHub Issues
+- Priority order: P0-critical > P1-high > P2-medium > P3-low
 
-## Editing rules
+## Rules
+- Run full test suite before committing
+- Do not modify generated files
+- Follow existing code style
 
-- Keep changes focused
-- Follow existing code style (JSDoc comments, `module.exports`)
-- Write tests for all new functions
-- Do not add unnecessary dependencies — use Node.js built-in APIs when possible
-- TDD: write failing test first, then implement
+## Loop Settings
 
-## Do NOT
-
-- Add a bundler or transpiler — this project stays simple
-- Introduce TypeScript — keep it plain JS for testing purposes
-- Add external test frameworks — use `node:test` built-in
+| Setting | Value | Description |
+|:--------|:------|:------------|
+| Session cap | 10 | Max PRs created per `/loop` run |
+| Pending PR limit | 10 | Stop creating PRs if this many await review |
+| Max group size | 5 | Max issues per group (auto-splits if larger) |
