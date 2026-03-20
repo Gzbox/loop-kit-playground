@@ -31,9 +31,13 @@ Address review feedback, verify main health. Do NOT merge PRs.
 ## Step 2: Load Specified Issue / 加载指定 Issue
 
 // turbo
-1. Sync to latest main:
+1. Sync to latest default branch / 同步到最新默认分支:
    ```bash
-   git checkout main && git pull
+   DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef --jq '.defaultBranchRef.name')
+   git checkout "$DEFAULT_BRANCH" && git pull || {
+     echo "⚠️ Merge conflict. Resolve manually. / 合并冲突，请手动解决。"
+     exit 1
+   }
    ```
 
 // turbo
@@ -44,7 +48,7 @@ Address review feedback, verify main health. Do NOT merge PRs.
 
 3. Verify the issue is actionable:
    - **Closed?** → Report to user and stop
-   - **Already has an open PR?** → Report and stop
+   - **Already has an open PR?** (match by `issue-<N>` or `plan-<N>` in branch name, or `#<N>` in PR title/body) → Report and stop
    - **Has `has-dependencies` label?** → Parse `### Depends On` section, check each referenced issue:
      - If any dependency is still open → report which issues are blocking and stop
      - If all dependencies are closed → proceed (issue is unblocked)
@@ -63,6 +67,11 @@ Address review feedback, verify main health. Do NOT merge PRs.
 Same decision flow as `/loop` — see [loop.md](loop.md) Step 3.
 
 > **Note**: If the issue is labeled `skip-human-decision` or requires a different platform, explain clearly to the user (they explicitly asked for this issue).
+
+> **Plan Mode with /loop-issue / 规划模式与 /loop-issue**:
+> - If issue is `plan-needed` and NO plan exists → Round 1 (same as /loop)
+> - If plan exists with unchecked sub-tasks → Agent shows sub-task list and asks user which sub-task to implement (since `/loop-issue` is user-directed, let user choose rather than auto-picking "next") / Agent 展示子任务列表，让用户选择要实现的子任务
+> - If plan PR is open (awaiting review) → report status, do NOT skip silently / 如果计划 PR 正在等待审核 → 报告状态，不要静默跳过
 
 ---
 

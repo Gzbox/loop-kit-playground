@@ -1,8 +1,14 @@
-# Auto-label issues from Issue Form dropdowns
+# Auto-label issues from Issue Form dropdowns / 从 Issue 表单下拉菜单自动添加标签
 #
 # When an issue is created via a GitHub Issue Form template,
-# this action parses the priority dropdown selection and
-# applies the corresponding label automatically.
+# this action parses the structured form sections and
+# applies the corresponding labels automatically.
+#
+# 当通过 GitHub Issue Form 模板创建 Issue 时，
+# 此 Action 解析表单的结构化段落并自动添加对应标签。
+#
+# Key design: section-based parsing (not full-body substring matching)
+# to avoid false positives from free-text descriptions.
 #
 # Copy this file to: .github/workflows/auto-label-issues.yml
 
@@ -19,38 +25,41 @@ jobs:
   auto-label:
     runs-on: ubuntu-latest
     steps:
-      - name: Apply priority label
+      - name: Apply labels from issue form / 从 Issue 表单应用标签
         uses: actions/github-script@v7
         with:
           script: |
             const body = context.payload.issue.body || '';
             const labels = [];
 
-            // Priority detection
-            const priorityMap = {
-              'P0-critical': /P0-critical/i,
-              'P1-high': /P1-high/i,
-              'P2-medium': /P2-medium/i,
-              'P3-low': /P3-low/i,
-            };
+            // --- Priority Detection (section-based) ---
+            // GitHub Issue Form renders dropdowns as:
+            //   ### Priority / 优先级\n\n<selected value>
+            // We match the section header, skip blank lines, then read the value.
+            const prioritySection = body.match(/### Priority(?:\s*\/\s*优先级)?\s*\n+\s*(.+)/i);
+            if (prioritySection) {
+              const val = prioritySection[1].trim();
+              if (/^P0-critical/i.test(val)) labels.push('P0-critical');
+              else if (/^P1-high/i.test(val)) labels.push('P1-high');
+              else if (/^P2-medium/i.test(val)) labels.push('P2-medium');
+              else if (/^P3-low/i.test(val)) labels.push('P3-low');
+            }
 
-            for (const [label, regex] of Object.entries(priorityMap)) {
-              if (regex.test(body)) {
-                labels.push(label);
-                break; // Only one priority label
+            // --- Classification Detection (section-based, mutually exclusive) ---
+            // Only one of plan-needed or skip-human-decision can be applied.
+            const classSection = body.match(/### Implementation Approach(?:\s*\/\s*实现方式)?\s*\n+\s*(.+)/i);
+            if (classSection) {
+              const val = classSection[1].trim();
+              if (/^Plan needed|^需要规划/i.test(val)) {
+                labels.push('plan-needed');
+              } else if (/^Human decision|^人工决策/i.test(val)) {
+                labels.push('skip-human-decision');
               }
+              // "Direct" does not add any label — it's the default path
             }
 
-            // Classification detection (bilingual: EN / 中文)
-            if (/Plan needed|需要规划/i.test(body)) {
-              labels.push('plan-needed');
-            }
-            if (/Human decision|人工决策/i.test(body)) {
-              labels.push('skip-human-decision');
-            }
-
-            // Dependency detection (bilingual headers)
-            const dependsSection = body.match(/### Depends On(?:\s*\/\s*依赖项)?\s*\n\s*(.+)/i);
+            // --- Dependency Detection (fixed: \n+ handles GitHub Form double newline) ---
+            const dependsSection = body.match(/### Depends On(?:\s*\/\s*依赖项)?\s*\n+\s*(.+)/i);
             if (dependsSection && /#\d+/.test(dependsSection[1])) {
               labels.push('has-dependencies');
             }

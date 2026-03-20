@@ -20,7 +20,13 @@ One-time setup workflow. The AI analyzes your project and auto-generates everyth
 ## Step 1: Verify Prerequisites / 检查前置条件
 
 // turbo
-1. Check gh authentication:
+1. Detect default branch name / 检测默认分支名:
+   ```bash
+   DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef --jq '.defaultBranchRef.name')
+   ```
+
+// turbo
+2. Check gh authentication / 检查 gh 认证:
    ```bash
    gh auth status
    ```
@@ -109,14 +115,25 @@ If `AGENTS.md` does not exist, create it with the following structure:
 
 | Setting | Value | Description |
 |:--------|:------|:------------|
-| Session cap | 10 | Max PRs created per `/loop` run |
+| Session cap | 5 | Max PRs created per `/loop` run / 每次 `/loop` 最多创建的 PR 数 |
 | Pending PR limit | 10 | Stop creating PRs if this many await review |
 | Max group size | 5 | Max issues per group (auto-splits if larger) |
 ```
 
-Commit the generated `AGENTS.md`:
+Create `docs/plans/` directory for Plan Mode / 为规划模式创建目录:
 ```bash
-git add AGENTS.md && git commit -m "chore: generate AGENTS.md via /loop-init"
+mkdir -p docs/plans
+```
+
+Commit the generated files / 提交生成的文件:
+```bash
+git add AGENTS.md docs/plans/ && git commit -m "chore: generate AGENTS.md via /loop-init" && git push || {
+  echo "⚠️ Push failed (branch protection?). Creating chore branch... / 推送失败（分支保护？），创建 chore 分支..."
+  CHORE_BRANCH="chore/loop-init-$(date +%Y%m%d)"
+  git checkout -b "$CHORE_BRANCH"
+  git push -u origin HEAD
+  echo "Pushed to $CHORE_BRANCH — create a PR to merge. / 已推送到 $CHORE_BRANCH — 请创建 PR 合并。"
+}
 ```
 
 ---

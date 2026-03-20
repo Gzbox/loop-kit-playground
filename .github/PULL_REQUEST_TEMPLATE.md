@@ -1,25 +1,34 @@
-## Summary / 概要
+## Closes #
 
-<!-- What does this PR do? One sentence. / 这个 PR 做了什么？一句话概括。 -->
+## Why / 为什么
 
-Closes #
+<!-- WHY this change is needed, not what changed / 为什么需要这个变更，而不是改了什么 -->
 
-## Changes / 变更
+## What Changed / 变更内容
 
-<!-- List the key changes. Be specific. / 列出主要变更，请具体说明。 -->
+<!-- Key changes, be specific / 主要变更，请具体说明 -->
 
 -
 
+## Acceptance Criteria / 验收标准
+
+<!-- Map each "Done When" item to specific code changes / 将每个"完成条件"映射到具体的代码变更 -->
+
+- [ ]
+
+## Key Review Points / 重点审查
+
+<!-- Focus your review on these lines / 请重点关注这些行 -->
+
+>
+
 ## Verification / 验证
 
-<!-- How was this tested? What commands were run? / 如何测试的？运行了哪些命令？ -->
-
 - [ ] Build passes / 构建通过
-- [ ] Tests pass (or: no test infrastructure yet) / 测试通过（或：尚无测试框架）
-- [ ] Relevant docs updated (if applicable) / 相关文档已更新（如适用）
+- [ ] Tests pass / 测试通过
 
-## Caveats / 注意事项
+## What I Did NOT Test / 未测试内容
 
-<!-- Any known limitations, pending validation, or follow-up needed? Delete if none. / 有无已知限制、待验证项或需跟进事项？无则删除。 -->
+<!-- Honest gaps. If all tested, write "None" / 诚实列出未覆盖项。如全部已测试，写"无" -->
 
 None. / 无。

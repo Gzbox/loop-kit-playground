@@ -49,7 +49,7 @@ body:
         - [ ] 导致崩溃的相同输入 → 不再崩溃
         - [ ] 边界情况：空输入 → 优雅处理
     validations:
-      required: false
+      required: true
 
   - type: input
     id: depends-on
