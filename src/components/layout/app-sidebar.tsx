@@ -1,8 +1,9 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouter } from "@tanstack/react-router";
 import {
 	ChevronRight,
 	Home,
 	LayoutDashboard,
+	LogOut,
 	type LucideIcon,
 	Settings,
 	Users,
@@ -28,6 +29,7 @@ import {
 	SidebarMenuSubButton,
 	SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
+import { useAuthStore } from "@/stores/auth";
 
 interface NavItem {
 	title: string;
@@ -64,6 +66,15 @@ const navMain: NavItem[] = [
 ];
 
 export function AppSidebar() {
+	const user = useAuthStore((s) => s.user);
+	const logout = useAuthStore((s) => s.logout);
+	const router = useRouter();
+
+	const handleLogout = () => {
+		logout();
+		router.navigate({ to: "/login" });
+	};
+
 	return (
 		<Sidebar collapsible="icon" variant="sidebar">
 			<SidebarHeader>
@@ -146,11 +157,19 @@ export function AppSidebar() {
 								<Users className="size-4" />
 							</div>
 							<div className="grid flex-1 text-left text-sm leading-tight">
-								<span className="truncate font-semibold">Admin User</span>
+								<span className="truncate font-semibold">
+									{user?.name ?? "User"}
+								</span>
 								<span className="truncate text-xs text-muted-foreground">
-									admin@example.com
+									{user?.email ?? ""}
 								</span>
 							</div>
+						</SidebarMenuButton>
+					</SidebarMenuItem>
+					<SidebarMenuItem>
+						<SidebarMenuButton onClick={handleLogout} tooltip="Logout">
+							<LogOut className="size-4" />
+							<span>Logout</span>
 						</SidebarMenuButton>
 					</SidebarMenuItem>
 				</SidebarMenu>
