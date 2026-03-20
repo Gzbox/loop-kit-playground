@@ -15,13 +15,13 @@ Process a **specific** GitHub issue by number. Follows the same discipline as `/
 
 ## Pre-flight Check / 预检
 
-Same as `/loop` — see [loop-job.md](loop-job.md) Pre-flight Check.
+Same as `/loop` — see [loop.md](loop.md) Pre-flight Check.
 
 ---
 
 ## Step 1: Check PRs & Verify Main / 检查 PR 和验证主干
 
-Same as `/loop` — see [loop-job.md](loop-job.md) Step 1.
+Same as `/loop` — see [loop.md](loop.md) Step 1.
 Address review feedback, verify main health. Do NOT merge PRs.
 
 > **Exception**: The pending PR limit rule does NOT apply here. The user explicitly selected this issue — always proceed.
@@ -60,7 +60,7 @@ Address review feedback, verify main health. Do NOT merge PRs.
 
 ## Step 3: Classify & Implement / 分类并实现
 
-Same decision flow as `/loop` — see [loop-job.md](loop-job.md) Step 3.
+Same decision flow as `/loop` — see [loop.md](loop.md) Step 3.
 
 > **Note**: If the issue is labeled `skip-human-decision` or requires a different platform, explain clearly to the user (they explicitly asked for this issue).
 
@@ -68,7 +68,7 @@ Same decision flow as `/loop` — see [loop-job.md](loop-job.md) Step 3.
 
 ## Step 4: Verify & Submit / 验证并提交
 
-Same as `/loop` — see [loop-job.md](loop-job.md) Step 4.
+Same as `/loop` — see [loop.md](loop.md) Step 4.
 
 **Additional for /loop-issue**: include related issue hints in PR body:
 ```markdown
@@ -81,7 +81,7 @@ Do NOT loop back for more issues — `/loop-issue` processes exactly one issue.
 
 ## Step 5: Record History / 记录历史
 
-Same format as `/loop` — see [loop-job.md](loop-job.md) Step 5.
+Same format as `/loop` — see [loop.md](loop.md) Step 5.
 Note that this issue was **manually selected**:
 
 ```markdown
