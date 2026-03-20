@@ -1,0 +1,61 @@
+name: Bug Report / Bug 报告
+description: Report a bug / 报告一个 Bug
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority / 优先级
+      description: How critical is this bug? / 这个 Bug 有多严重？
+      options:
+        - P0-critical — blocks all progress / 阻塞所有进度
+        - P1-high — core functionality broken / 核心功能不可用
+        - P2-medium — quality issue / 质量问题
+        - P3-low — minor / cosmetic / 小问题 / 外观问题
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description / Bug 描述
+      description: What happened? What did you expect? / 发生了什么？你期望的结果是什么？
+      placeholder: |
+        **What happened: / 发生了什么：**
+
+        **Expected behavior: / 期望行为：**
+
+        **Steps to reproduce: / 复现步骤：**
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment / 环境信息
+      description: OS, version, relevant config / 操作系统、版本、相关配置
+      placeholder: "macOS 15.3, Swift 6.0, etc."
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Done When / 完成条件
+      description: List testable criteria — each item becomes a test case / 列出可测试的条件 — 每条将成为一个测试用例
+      placeholder: |
+        - [ ] Same input that caused crash → no crash
+        - [ ] Edge case: empty input → handled gracefully
+        - [ ] 导致崩溃的相同输入 → 不再崩溃
+        - [ ] 边界情况：空输入 → 优雅处理
+    validations:
+      required: false
+
+  - type: input
+    id: depends-on
+    attributes:
+      label: Depends On / 依赖项
+      description: Issues that must be resolved first (e.g., #10, #12) / 必须先解决的 Issue（如 #10, #12）
+      placeholder: "#10, #12"
+    validations:
+      required: false

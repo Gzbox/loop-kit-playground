@@ -1,0 +1,65 @@
+name: Feature Request / 功能建议
+description: Suggest an improvement or new feature / 建议改进或新功能
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority / 优先级
+      description: How important is this feature? / 这个功能有多重要？
+      options:
+        - P0-critical — essential for the project to work / 项目正常运行所必需
+        - P1-high — important for core experience / 对核心体验非常重要
+        - P2-medium — quality of life improvement / 提升使用体验
+        - P3-low — nice to have / 有则更好
+    validations:
+      required: true
+
+  - type: dropdown
+    id: classification
+    attributes:
+      label: Implementation Approach / 实现方式
+      description: Does this need planning first? / 是否需要先做规划？
+      options:
+        - Direct — clear scope, can implement directly / 直接实现 — 范围明确，可以直接实现
+        - Plan needed — requires design/architecture discussion first / 需要规划 — 需先进行设计/架构讨论
+        - Human decision — needs user input before proceeding / 人工决策 — 需要用户确认后才能进行
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature Description / 功能描述
+      description: What do you want and why? / 你想要什么功能？为什么？
+      placeholder: |
+        **What: / 功能：**
+
+        **Why: / 原因：**
+
+        **Suggested approach (optional): / 建议方案（可选）：**
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Done When / 完成条件
+      description: List testable criteria — each item becomes a test case / 列出可测试的条件 — 每条将成为一个测试用例
+      placeholder: |
+        - [ ] Wrong password → shows "Invalid credentials" error
+        - [ ] Empty password → submit button disabled
+        - [ ] Valid login → redirects to dashboard within 200ms
+        - [ ] 错误密码 → 显示"凭据无效"错误
+        - [ ] 空密码 → 提交按钮禁用
+    validations:
+      required: false
+
+  - type: input
+    id: depends-on
+    attributes:
+      label: Depends On / 依赖项
+      description: Issues that must be resolved first (e.g., #10, #12) / 必须先解决的 Issue（如 #10, #12）
+      placeholder: "#10, #12"
+    validations:
+      required: false
