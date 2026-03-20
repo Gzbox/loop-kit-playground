@@ -1,0 +1,65 @@
+{
+	"common": {
+		"appName": "管理系统",
+		"appDescription": "管理控制台",
+		"save": "保存更改",
+		"cancel": "取消",
+		"delete": "删除",
+		"edit": "编辑",
+		"add": "添加",
+		"search": "搜索",
+		"logout": "退出登录"
+	},
+	"nav": {
+		"navigation": "导航",
+		"dashboard": "仪表盘",
+		"userManagement": "用户管理",
+		"allUsers": "所有用户",
+		"roles": "角色",
+		"settings": "设置",
+		"profile": "个人资料",
+		"preferences": "偏好设置"
+	},
+	"auth": {
+		"welcomeBack": "欢迎回来",
+		"signInDescription": "登录您的管理账户",
+		"email": "邮箱",
+		"password": "密码",
+		"signIn": "登录",
+		"signingIn": "登录中...",
+		"demoHint": "演示: admin@example.com / 任意密码",
+		"invalidCredentials": "邮箱或密码无效",
+		"emailRequired": "请输入有效的邮箱地址",
+		"passwordRequired": "请输入密码"
+	},
+	"dashboard": {
+		"title": "仪表盘",
+		"subtitle": "管理系统概览。",
+		"totalUsers": "总用户数",
+		"revenue": "收入",
+		"activeOrders": "活跃订单",
+		"conversion": "转化率",
+		"fromLastMonth": "+{{percent}}% 较上月"
+	},
+	"users": {
+		"title": "用户管理",
+		"subtitle": "管理团队成员及其角色。",
+		"addUser": "添加用户",
+		"allUsersTitle": "所有用户",
+		"allUsersDescription": "组织中的所有用户列表。",
+		"name": "姓名",
+		"email": "邮箱",
+		"role": "角色",
+		"status": "状态"
+	},
+	"settings": {
+		"title": "设置",
+		"subtitle": "管理您的账户设置和偏好。",
+		"profileTitle": "个人资料",
+		"profileDescription": "更新您的个人信息。",
+		"nameLabel": "姓名",
+		"namePlaceholder": "您的姓名",
+		"emailLabel": "邮箱",
+		"emailPlaceholder": "您的邮箱"
+	}
+}

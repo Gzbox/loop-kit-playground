@@ -1,0 +1,65 @@
+{
+	"common": {
+		"appName": "Admin System",
+		"appDescription": "Management Console",
+		"save": "Save Changes",
+		"cancel": "Cancel",
+		"delete": "Delete",
+		"edit": "Edit",
+		"add": "Add",
+		"search": "Search",
+		"logout": "Logout"
+	},
+	"nav": {
+		"navigation": "Navigation",
+		"dashboard": "Dashboard",
+		"userManagement": "User Management",
+		"allUsers": "All Users",
+		"roles": "Roles",
+		"settings": "Settings",
+		"profile": "Profile",
+		"preferences": "Preferences"
+	},
+	"auth": {
+		"welcomeBack": "Welcome back",
+		"signInDescription": "Sign in to your admin account",
+		"email": "Email",
+		"password": "Password",
+		"signIn": "Sign in",
+		"signingIn": "Signing in...",
+		"demoHint": "Demo: admin@example.com / any password",
+		"invalidCredentials": "Invalid email or password",
+		"emailRequired": "Please enter a valid email",
+		"passwordRequired": "Password is required"
+	},
+	"dashboard": {
+		"title": "Dashboard",
+		"subtitle": "Overview of your admin system.",
+		"totalUsers": "Total Users",
+		"revenue": "Revenue",
+		"activeOrders": "Active Orders",
+		"conversion": "Conversion",
+		"fromLastMonth": "+{{percent}}% from last month"
+	},
+	"users": {
+		"title": "User Management",
+		"subtitle": "Manage your team members and their roles.",
+		"addUser": "Add User",
+		"allUsersTitle": "All Users",
+		"allUsersDescription": "A list of all users in your organization.",
+		"name": "Name",
+		"email": "Email",
+		"role": "Role",
+		"status": "Status"
+	},
+	"settings": {
+		"title": "Settings",
+		"subtitle": "Manage your account settings and preferences.",
+		"profileTitle": "Profile",
+		"profileDescription": "Update your personal information.",
+		"nameLabel": "Name",
+		"namePlaceholder": "Your name",
+		"emailLabel": "Email",
+		"emailPlaceholder": "Your email"
+	}
+}

@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { LanguageSwitcher } from "./language-switcher";
 
 interface AppHeaderProps {
 	breadcrumbs?: { label: string; href?: string }[];
@@ -22,7 +23,7 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
 				<PanelLeft className="size-4" />
 				<span className="sr-only">Toggle sidebar</span>
 			</SidebarTrigger>
-			<Separator orientation="vertical" className="mr-2 !h-4" />
+			<Separator orientation="vertical" className="mr-2 h-4!" />
 			<Breadcrumb>
 				<BreadcrumbList>
 					{breadcrumbs.map((crumb, index) => {
@@ -44,6 +45,9 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
 					})}
 				</BreadcrumbList>
 			</Breadcrumb>
+			<div className="ml-auto flex items-center gap-1">
+				<LanguageSwitcher />
+			</div>
 		</header>
 	);
 }
