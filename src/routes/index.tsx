@@ -1,4 +1,3 @@
-import { AppLayout } from "@/components/layout/app-layout";
 import {
 	Card,
 	CardContent,
@@ -6,10 +5,19 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { createFileRoute } from "@tanstack/react-router";
 
-function App() {
+export const Route = createFileRoute("/")({
+	component: DashboardPage,
+});
+
+function DashboardPage() {
 	return (
-		<AppLayout breadcrumbs={[{ label: "Dashboard" }]}>
+		<div className="space-y-6">
+			<div>
+				<h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
+				<p className="text-muted-foreground">Overview of your admin system.</p>
+			</div>
 			<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
 				<Card>
 					<CardHeader>
@@ -56,8 +64,6 @@ function App() {
 					</CardContent>
 				</Card>
 			</div>
-		</AppLayout>
+		</div>
 	);
 }
-
-export default App;

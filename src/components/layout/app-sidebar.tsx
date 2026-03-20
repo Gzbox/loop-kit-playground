@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import {
 	ChevronRight,
 	Home,
@@ -48,7 +49,7 @@ const navMain: NavItem[] = [
 		icon: Users,
 		items: [
 			{ title: "All Users", url: "/users" },
-			{ title: "Roles", url: "/users/roles" },
+			{ title: "Roles", url: "/users" },
 		],
 	},
 	{
@@ -56,8 +57,8 @@ const navMain: NavItem[] = [
 		url: "/settings",
 		icon: Settings,
 		items: [
-			{ title: "Profile", url: "/settings/profile" },
-			{ title: "Preferences", url: "/settings/preferences" },
+			{ title: "Profile", url: "/settings" },
+			{ title: "Preferences", url: "/settings" },
 		],
 	},
 ];
@@ -69,7 +70,7 @@ export function AppSidebar() {
 				<SidebarMenu>
 					<SidebarMenuItem>
 						<SidebarMenuButton size="lg" asChild>
-							<a href="/">
+							<Link to="/">
 								<div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
 									<LayoutDashboard className="size-4" />
 								</div>
@@ -79,7 +80,7 @@ export function AppSidebar() {
 										Management Console
 									</span>
 								</div>
-							</a>
+							</Link>
 						</SidebarMenuButton>
 					</SidebarMenuItem>
 				</SidebarMenu>
@@ -111,9 +112,9 @@ export function AppSidebar() {
 													{item.items.map((sub) => (
 														<SidebarMenuSubItem key={sub.title}>
 															<SidebarMenuSubButton asChild>
-																<a href={sub.url}>
+																<Link to={sub.url}>
 																	<span>{sub.title}</span>
-																</a>
+																</Link>
 															</SidebarMenuSubButton>
 														</SidebarMenuSubItem>
 													))}
@@ -124,10 +125,10 @@ export function AppSidebar() {
 								) : (
 									<SidebarMenuItem key={item.title}>
 										<SidebarMenuButton asChild tooltip={item.title}>
-											<a href={item.url}>
+											<Link to={item.url}>
 												{item.icon && <item.icon />}
 												<span>{item.title}</span>
-											</a>
+											</Link>
 										</SidebarMenuButton>
 									</SidebarMenuItem>
 								),
