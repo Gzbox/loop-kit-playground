@@ -25,7 +25,7 @@ Use `create-vite` to scaffold, then layer in each dependency. File-based routing
 > Implementation order. Each becomes a separate PR.
 > 实现顺序。每个子任务将成为一个独立的 PR。
 
-- [ ] 1. Project scaffolding — Vite 7 + React 19 + TypeScript 5.9 + Biome setup
+- [x] 1. Project scaffolding — Vite 7 + React 19 + TypeScript 5.9 + Biome setup (PR #11)
 - [ ] 2. Tailwind CSS 4 + shadcn/ui integration — theme system, dark mode
 - [ ] 3. TanStack Router — file-based routing, layout system, auth guards
 - [ ] 4. Authentication module — login page, Zustand auth store, token management
