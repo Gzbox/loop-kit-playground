@@ -1,4 +1,6 @@
+import { ErrorBoundary } from "@/components/error-boundary";
 import { AppLayout } from "@/components/layout/app-layout";
+import { Toaster } from "@/components/ui/sonner";
 import { useAuthStore } from "@/stores/auth";
 import { Outlet, createRootRoute, redirect } from "@tanstack/react-router";
 
@@ -16,12 +18,20 @@ function RootComponent() {
 	const { isAuthenticated } = useAuthStore.getState();
 
 	if (!isAuthenticated) {
-		return <Outlet />;
+		return (
+			<ErrorBoundary>
+				<Outlet />
+				<Toaster richColors closeButton position="top-right" />
+			</ErrorBoundary>
+		);
 	}
 
 	return (
-		<AppLayout>
-			<Outlet />
-		</AppLayout>
+		<ErrorBoundary>
+			<AppLayout>
+				<Outlet />
+			</AppLayout>
+			<Toaster richColors closeButton position="top-right" />
+		</ErrorBoundary>
 	);
 }
