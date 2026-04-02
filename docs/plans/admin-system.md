@@ -95,13 +95,13 @@ admin/
 ## Sub-tasks (implementation order)
 
 - [x] 1. **Project scaffold** — `npx create-vite`, install all dependencies, configure Vite/TS/Biome/Tailwind (PR #11)
-- [x] 2. **shadcn/ui setup** — initialize shadcn/ui, install base components (Button, Input, Card, Dialog, Table, etc.)
-- [ ] 3. **App shell** — layout components (Sidebar, Header, Breadcrumb), responsive design
-- [ ] 4. **Routing** — TanStack Router setup, route tree, layout routes
-- [ ] 5. **Auth flow** — Zustand auth store, login page, route guards, mock API
-- [ ] 6. **i18n** — i18next setup, locale files, language switcher
-- [ ] 7. **Theme** — dark/light mode, system detection, persistence
-- [ ] 8. **Dashboard page** — stats cards, charts, activity feed
+- [x] 2. **shadcn/ui setup** — initialize shadcn/ui, install base components (PR #12)
+- [x] 3. **App shell** — layout components (Sidebar, Header, Breadcrumb) (PR #13)
+- [x] 4. **Routing** — TanStack Router setup, route tree, layout routes (PR #14)
+- [x] 5. **Auth flow** — Zustand auth store, login page, route guards (PR #15)
+- [x] 6. **i18n** — i18next setup, locale files, language switcher (PR #16)
+- [x] 7. **Theme** — dark/light mode, system detection, persistence (PR #17)
+- [x] 8. **Dashboard page** — stats cards, charts, activity feed
 - [ ] 9. **User management** — CRUD pages with TanStack Query, forms, data table
 - [ ] 10. **Settings page** — profile and system preferences
 - [ ] 11. **Polish** — animations, loading states, error boundaries, responsive fixes
